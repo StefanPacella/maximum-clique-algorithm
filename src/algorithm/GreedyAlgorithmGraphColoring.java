@@ -19,7 +19,7 @@ public class GreedyAlgorithmGraphColoring {
 	}
 
 	public void colorTheGraph() {
-		int node = getNodeWithMoreNeighbors(graph.getListNodes());
+		int node = getNodeWithLessNeighbors(graph.getListNodes());
 		mapNodesChromaticColor.put(node, 1);
 		stack.addAll(graph.getListNeighbors(node));
 
@@ -27,7 +27,7 @@ public class GreedyAlgorithmGraphColoring {
 			int size = stack.size();
 			Set<Integer> temp = new HashSet<Integer>();
 			for (int i = 0; i < size; i++) {
-				int nc = getNodeWithMoreNeighbors(stack);
+				int nc = getNodeWithLessNeighbors(stack);
 				colorTheNode(nc);
 				stack.remove(nc);
 				temp.add(nc);
@@ -69,7 +69,7 @@ public class GreedyAlgorithmGraphColoring {
 		return color;
 	}
 
-	private int getNodeWithMoreNeighbors(Set<Integer> listNodes) {
+	private int getNodeWithLessNeighbors(Set<Integer> listNodes) {
 		int i = listNodes.stream().findAny().get();
 		for (Integer node : listNodes) {
 			if (graph.getListNeighbors(i).size() < graph.getListNeighbors(node).size())
