@@ -1,4 +1,4 @@
-This algorithm is inspired by the following document: 
+This algorithm finds the maximum clique in a graph and is inspired by the following document: 
 
 https://www.researchgate.net/publication/278716368_A_review_on_algorithms_for_maximum_clique_problems.
 
