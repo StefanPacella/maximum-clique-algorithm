@@ -11,8 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		////https://networkrepository.com/dimacs.php
-
-
+		
 		try {
 			Graph graph = readTheClique(args[0]);
 
@@ -21,8 +20,10 @@ public class Main {
 
 			Set<Integer> solution = MaximumCliqueAlgorithm.solve(graph);
 
+			graph.checkTheSolution(solution);
+			
 			System.out.println("size of the solution " + solution.size());
-
+			
 			solution.stream().sorted().forEach(x -> System.out.print(x + " "));
 
 			System.out.println();
@@ -59,3 +60,4 @@ public class Main {
 	}
 
 }
+
