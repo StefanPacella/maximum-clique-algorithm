@@ -25,7 +25,7 @@ public class AlgorithmGraphColoring {
 		colorTheGraph();
 	}
 
-	public void colorTheGraph() {
+	private void colorTheGraph() {
 		List<Integer> listnode = graph.getListNodes().stream().collect(Collectors.toList());
 		while (!listnode.isEmpty()) {
 			List<Integer> ln = listnode.stream().toList();
