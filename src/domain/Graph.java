@@ -89,7 +89,7 @@ public class Graph {
 		return mapNodes.keySet();
 	}
 
-	public void addNewNodeAndListNeighbors(Integer node, Set<Integer> s) {
+	public void addNewNodeAtTheListNeighbors(Integer node, Set<Integer> s) {
 		mapNodes.put(node, s);
 	}
 
@@ -102,6 +102,38 @@ public class Graph {
 			}
 		}
 		return true;
+	}
+
+	public static Graph createTheSubgraph(List<Integer> listSubGraphnodes, Graph graph) {
+		Graph g = new Graph();
+
+		for (Integer node : listSubGraphnodes) {
+			Set<Integer> set = new HashSet<Integer>();
+			Set<Integer> setNeighbors = graph.getListNeighbors(node);
+			for (Integer nodeNeighbors : setNeighbors) {
+				if (listSubGraphnodes.contains(nodeNeighbors)) {
+					set.add(nodeNeighbors);
+				}
+			}
+			if (set.size() > 0) {
+				g.addNewNodeAtTheListNeighbors(node, set);
+			}
+
+			else if (set.isEmpty()) {
+				g.addNewNodeAtTheListNeighbors(node, new HashSet<Integer>());
+			}
+		}
+		return g;
+	}
+
+	public void checkTheSolution(Set<Integer> solution) {
+		for (Integer node : solution) {
+			List<Integer> listNodeN = solution.stream().filter(x -> !x.equals(node)).toList();
+			for (Integer nodeN : listNodeN) {
+				if (!this.getListNeighbors(node).contains(nodeN))
+					System.out.println("Solution not valid");
+			}
+		}
 	}
 
 }
