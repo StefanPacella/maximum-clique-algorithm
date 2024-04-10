@@ -31,6 +31,7 @@ public class MaximumCliqueAlgorithm extends Thread {
 		this.p = p;
 		this.graph = graph;
 		cache = new CacheSlave(cacheMaster);
+		cacheMaster.addSlave(cache);
 	}
 
 	public static Set<Integer> solve(Graph graph) {
