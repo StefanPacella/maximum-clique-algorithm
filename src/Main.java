@@ -9,21 +9,20 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		
-		////https://networkrepository.com/dimacs.php
-		
+
+		//// https://networkrepository.com/dimacs.php
+
 		try {
 			Graph graph = readTheClique(args[0]);
-
 			long currentTimeMillisBefore = System.currentTimeMillis();
 			System.out.println("Solving " + args[0]);
 
 			Set<Integer> solution = MaximumCliqueAlgorithm.solve(graph);
 
 			graph.checkTheSolution(solution);
-			
+
 			System.out.println("size of the solution " + solution.size());
-			
+
 			solution.stream().sorted().forEach(x -> System.out.print(x + " "));
 
 			System.out.println();
@@ -34,10 +33,11 @@ public class Main {
 					"Time : " + ((double) (currentTimeMillisAfter - currentTimeMillisBefore)) / 1000 + " seconds");
 
 			System.out.println(" ");
-		} catch (Exception e) {
+		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Invalid file");
 		}
+
 	}
 
 	private static Graph readTheClique(String file) throws BusinessException {
@@ -60,4 +60,3 @@ public class Main {
 	}
 
 }
-
