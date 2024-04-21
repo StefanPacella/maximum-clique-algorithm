@@ -108,13 +108,8 @@ public class Graph {
 		Graph g = new Graph();
 
 		for (Integer node : listSubGraphnodes) {
-			Set<Integer> set = new HashSet<Integer>();
 			Set<Integer> setNeighbors = graph.getListNeighbors(node);
-			for (Integer nodeNeighbors : setNeighbors) {
-				if (listSubGraphnodes.contains(nodeNeighbors)) {
-					set.add(nodeNeighbors);
-				}
-			}
+			Set<Integer> set = listSubGraphnodes.stream().filter(x -> setNeighbors.contains(x)).collect(Collectors.toSet());
 			if (set.size() > 0) {
 				g.addNewNodeAtTheListNeighbors(node, set);
 			}
