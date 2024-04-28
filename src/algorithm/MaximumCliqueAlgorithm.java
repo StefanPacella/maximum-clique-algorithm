@@ -43,7 +43,7 @@ public class MaximumCliqueAlgorithm extends Thread {
 
 		setManyCores(p);
 
-		p = p.stream().sorted(Comparator.comparing(x -> -mapNodesChromaticColor.get(x))).collect(Collectors.toList());
+		p = p.stream().sorted(Comparator.comparing(x -> mapNodesChromaticColor.get(x))).collect(Collectors.toList());
 
 		int limit = p.size();
 		for (int i = 0; i < limit; i++) {
